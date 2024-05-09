@@ -1,9 +1,12 @@
 const express = require("express");
 
-class App {
-    constructor() {
-        this.app = express();
-    }
-}
+const app = express();
 
-module.exports = App;
+// GET , POST , DELETE
+app.get("/", (req, res, next) => {
+    // 47
+    return res.json({
+        message: "Hello World",
+    });
+});
+module.exports = app;
