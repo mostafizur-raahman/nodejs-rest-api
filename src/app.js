@@ -11,6 +11,10 @@ app.get("/", (req, res, next) => {
     });
 });
 
+// Routes
+const userRouter = require("./user/userRouter");
+
+app.use("/api/users", userRouter);
 // Global error handler
 app.use(globalError);
 
