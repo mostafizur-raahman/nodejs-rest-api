@@ -1,5 +1,6 @@
 const createHttpError = require("http-errors");
 const User = require("./userModel");
+const bcrypt = require("bcrypt");
 
 const createuser = async (req, res, next) => {
     const { name, email, password } = req.body;
@@ -16,7 +17,7 @@ const createuser = async (req, res, next) => {
         return next(error);
     }
 
-    res.json({});
+    const hashPassword = await bcrypt.hash(password, 10);
 };
 
 module.exports = {
