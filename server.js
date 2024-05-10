@@ -1,7 +1,10 @@
 const app = require("./src/app.js");
 const config = require("./src/config/config.js");
+const connectDB = require("./src/config/db.js");
 
-const serverStart = () => {
+const serverStart = async () => {
+    await connectDB();
+
     const PORT = config.port || 3000;
 
     app.listen(PORT, () => {
