@@ -1,5 +1,6 @@
 const createBook = (req, res, next) => {
-    const {} = req.body;
+    console.log("Files", req.files);
+
     res.json({});
 };
 

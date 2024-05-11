@@ -14,7 +14,7 @@ bookRouter.post(
     "/",
     upload.fields([
         { name: "coverImage", maxCount: 1 },
-        { name: "fileName", maxCount: 1 },
+        { name: "file", maxCount: 1 },
     ]),
     createBook
 );
