@@ -18,8 +18,10 @@ app.get("/", (req, res, next) => {
 
 // Routes
 const userRouter = require("./user/userRouter");
+const bookRouter = require("./book/bookRouter");
 
 app.use("/api/users", userRouter);
+app.use("/api/books", bookRouter);
 
 // Global error handler
 app.use(globalError);
