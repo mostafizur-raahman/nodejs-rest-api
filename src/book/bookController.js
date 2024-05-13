@@ -1,15 +1,18 @@
 const createHttpError = require("http-errors");
 const cloudinary = require("../config/cloudinary");
 const path = require("path");
+const Book = require("./bookModel");
 
 const createBook = async (req, res, next) => {
     try {
         console.log("Files", req.files);
+        const { title, genre } = req.body;
 
         const coverImageMimeType = req.files.coverImage[0].mimetype
             .split("/")
             .at(-1);
 
+        // for cover image
         const fileName = req.files.coverImage[0].filename;
 
         const filePath = path.resolve(
@@ -44,6 +47,14 @@ const createBook = async (req, res, next) => {
         );
         console.log("file upload result ", bookFileUploadResult);
         console.log("upload result", uploadResult);
+
+        const newBook = await Book.create({
+            title,
+            author: "663de9db002e06189aec08a9",
+            coverImage: uploadResult.secure_url,
+            file: bookFileUploadResult.secure_url,
+            genre,
+        });
 
         res.json({});
     } catch (error) {
